@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Битва сравнений</title>
 <meta name="description" content="Степени сравнения прилагательных — интерактивная презентация-шоу">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;700;900&family=PT+Serif&display=swap" rel="stylesheet">
+<!-- fonts & libs are bundled in /assets so the deck works offline (USB stick, classroom without Wi-Fi) -->
+<link href="assets/fonts.css" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
 <style>
 :root{
@@ -18,16 +17,16 @@
   --r:22px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background-color:var(--bg);background-image:linear-gradient(rgba(0,0,0,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(0,0,0,.045) 2px,transparent 2px);background-size:50px 50px;font-family:"Golos Text",system-ui,sans-serif;color:var(--ink)}
+html,body{height:100%;overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;background-color:var(--bg);background-image:linear-gradient(rgba(0,0,0,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(0,0,0,.045) 2px,transparent 2px);background-size:50px 50px;font-family:"Golos Text",system-ui,sans-serif;color:var(--ink)}
 button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
 
 /* ---------- stage (fixed 1600x900, scaled to fit) ---------- */
-#viewport{position:fixed;inset:0;overflow:hidden}
+#viewport{position:fixed;top:0;right:0;bottom:0;left:0;overflow:hidden}
 #stage{width:1600px;height:900px;position:absolute;left:50%;top:50%;overflow:hidden;background:var(--bg);
   background-image:linear-gradient(rgba(0,0,0,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(0,0,0,.045) 2px,transparent 2px);
   background-size:50px 50px;transform-origin:center center;flex:none}
 
-.slide{position:absolute;inset:0;padding:70px 90px 90px;display:flex;flex-direction:column;
+.slide{position:absolute;top:0;right:0;bottom:0;left:0;padding:70px 90px 90px;display:flex;flex-direction:column;
   opacity:0;visibility:hidden;transform:translateX(80px) rotate(1deg);transition:opacity .45s, transform .55s cubic-bezier(.2,.9,.3,1.2), visibility 0s .5s}
 .slide.before{transform:translateX(-80px) rotate(-1deg)}
 .slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .45s, transform .55s cubic-bezier(.2,.9,.3,1.2), visibility 0s}
@@ -67,7 +66,7 @@ mark{background:var(--yellow);padding:0 .15em;border-radius:6px;color:inherit}
 .btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
 
 /* floating background emoji */
-.floaters{position:absolute;inset:0;pointer-events:none;z-index:0}
+.floaters{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;z-index:0}
 .floaters span{position:absolute;font-size:70px;opacity:.9;animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-26px) rotate(6deg)}}
 .slide > *:not(.floaters){position:relative;z-index:1}
@@ -76,25 +75,29 @@ mark{background:var(--yellow);padding:0 .15em;border-radius:6px;color:inherit}
 #progress{position:fixed;left:0;bottom:0;height:10px;background:var(--pink);border-top:3px solid var(--ink);transition:width .5s;z-index:50}
 #hud{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:50;align-items:center;opacity:.35;transition:opacity .25s}
 #hud:hover{opacity:1}
-#hud button{width:46px;height:46px;border:4px solid var(--ink);border-radius:14px;background:var(--paper);font-size:24px;box-shadow:4px 4px 0 var(--ink);font-family:"Unbounded";font-weight:700}
+#hud{--hb:clamp(40px,2.6vw,120px)}
+#hud button{width:var(--hb);height:var(--hb);border:4px solid var(--ink);border-radius:calc(var(--hb)*.28);background:var(--paper);font-size:calc(var(--hb)*.48);box-shadow:4px 4px 0 var(--ink);font-family:"Unbounded";font-weight:700}
 #hud button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-#hud #uzBtn{width:auto;padding:0 14px;font-size:18px}
+#hud #uzBtn{width:auto;padding:0 calc(var(--hb)*.3);font-size:calc(var(--hb)*.38)}
 body.no-uz #uzBtn{opacity:.45}
 @media (hover:none){#hud{opacity:.6}}
 @media (max-width:900px),(max-height:500px){
   #hud{gap:6px;right:8px;bottom:8px}
   #hud button{width:36px;height:36px;font-size:17px;border-width:3px;border-radius:10px;box-shadow:2px 2px 0 var(--ink)}
   #hud #uzBtn{font-size:13px;padding:0 8px}
-  #counter{font-size:13px;padding:9px 10px;min-width:64px;border-radius:10px}
+  #hud #counter{font-size:13px;padding:9px 10px;min-width:64px;border-radius:10px}
   #progress{height:6px;border-top-width:2px}
 }
+/* invisible tap zones on the slide edges — handy on touch boards / smart TVs */
+.edge{position:fixed;top:0;bottom:0;width:4vw;z-index:40;cursor:pointer}
+#edgeL{left:0} #edgeR{right:0;bottom:calc(var(--hb,46px) + 40px)}
 #rotate{display:none;position:fixed;left:12px;right:12px;top:max(12px,env(safe-area-inset-top));z-index:60;background:var(--yellow);border:3px solid var(--ink);border-radius:14px;box-shadow:3px 3px 0 var(--ink);
   padding:10px 44px 10px 14px;font-weight:700;font-size:15px;line-height:1.3}
 #rotate span{font-size:20px;margin-right:4px}
 #rotate button{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:18px;width:30px;height:30px}
 @media (orientation:portrait) and (max-width:900px){#rotate{display:block}}
 body.rotate-off #rotate{display:none}
-#counter{font-family:"Unbounded";font-weight:700;font-size:18px;background:var(--ink);color:#fff;border-radius:12px;padding:12px 14px;min-width:96px;text-align:center}
+#counter{font-family:"Unbounded";font-weight:700;font-size:calc(var(--hb)*.38);background:var(--ink);color:#fff;border-radius:calc(var(--hb)*.26);padding:calc(var(--hb)*.27) calc(var(--hb)*.3);min-width:calc(var(--hb)*2);text-align:center}
 
 /* ---------- 1. title ---------- */
 .title-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
@@ -119,7 +122,7 @@ body.rotate-off #rotate{display:none}
 body.no-uz .side .nm small{display:none}
 .bar{height:46px;border:4px solid var(--ink);border-radius:14px;margin-top:18px;background:#eee;position:relative;overflow:hidden}
 .bar i{position:absolute;left:0;top:0;bottom:0;width:0;transition:width .5s cubic-bezier(.2,1.2,.4,1)}
-.bar b{position:absolute;inset:0;display:grid;place-items:center;font-family:"Unbounded";font-size:20px}
+.bar b{position:absolute;top:0;right:0;bottom:0;left:0;display:grid;place-items:center;font-family:"Unbounded";font-size:20px}
 .side.win{animation:win 1s ease-in-out infinite}
 @keyframes win{50%{box-shadow:0 0 0 10px var(--yellow),var(--sh)}}
 .side.win::after{content:"👑";position:absolute;top:8px;right:16px;font-size:56px;animation:float 2s ease-in-out infinite}
@@ -154,7 +157,7 @@ body.no-uz .side .nm small{display:none}
 .flip{perspective:1000px;cursor:pointer;height:228px}
 .flip .in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.4,.5,1);transform-style:preserve-3d}
 .flip.on .in{transform:rotateY(180deg)}
-.flip .f,.flip .bk{position:absolute;inset:0;backface-visibility:hidden;border:var(--b);border-radius:22px;box-shadow:var(--sh-s);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px}
+.flip .f,.flip .bk{position:absolute;top:0;right:0;bottom:0;left:0;backface-visibility:hidden;border:var(--b);border-radius:22px;box-shadow:var(--sh-s);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px}
 .flip .f{background:var(--paper)}
 .flip .bk{transform:rotateY(180deg)}
 .flip .big{font-size:60px;line-height:1.1}
@@ -228,7 +231,7 @@ td:first-child{font-weight:700}
 .bg-c .uz,.bg-y .uz,.bg-g .uz,.bg-o .uz{color:#0d4a36}
 /* ---------- final video (russian subtitles over the baked-in english) ---------- */
 #videoSlide{padding:0;background:#FEFEFE}
-#videoSlide video{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+#videoSlide video{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:fill}
 #videoSlide .vcap{position:absolute;z-index:2;background:#FEFEFE;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
   font-family:"PT Serif",Georgia,serif;font-size:72px;line-height:1.6;color:#222;text-align:center;opacity:0;transition:opacity .12s}
 .vcap span{opacity:0;transition:opacity .35s}
@@ -501,9 +504,10 @@ td:first-child{font-weight:700}
   <button id="nextBtn" title="Вперёд">→</button>
 </div>
 
+<div class="edge" id="edgeL"></div><div class="edge" id="edgeR"></div>
 <div id="rotate"><span>📱🔄</span> Telefonni yotqizing — shunda slaydlar kattaroq ko'rinadi <button aria-label="Yopish">✕</button></div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="assets/confetti.min.js"></script>
 <script>
 /* ---------- battles ---------- */
 const BATTLES = [
@@ -562,6 +566,8 @@ function go(n){
   slides[n].id==='videoSlide' ? playEnd() : endVideo.pause();
 }
 document.getElementById('nextBtn').onclick=()=>go(cur+1);
+document.getElementById('edgeR').onclick=()=>go(cur+1);
+document.getElementById('edgeL').onclick=()=>go(cur-1);
 document.getElementById('prevBtn').onclick=()=>go(cur-1);
 document.addEventListener('keydown',e=>{
   if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(cur+1)}
@@ -575,7 +581,7 @@ let tx=null;
 addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
 addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));tx=null});
 
-function toggleFs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.()}
+function toggleFs(){document.fullscreenElement?document.exitFullscreen():(document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen||function(){}).call(document.documentElement)}
 function toggleUz(){document.body.classList.toggle('no-uz');try{localStorage.setItem('noUz',document.body.classList.contains('no-uz')?'1':'')}catch(e){}}
 document.getElementById('fsBtn').onclick=toggleFs;
 document.querySelector('#rotate button').onclick=()=>document.body.classList.add('rotate-off');
@@ -585,7 +591,7 @@ try{if(localStorage.getItem('noUz'))document.body.classList.add('no-uz')}catch(e
 /* scale stage */
 const stage=document.getElementById('stage');
 function fit(){const vv=window.visualViewport,w=vv?vv.width:innerWidth,h=vv?vv.height:innerHeight,s=Math.min(w/1600,h/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
-addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,200));window.visualViewport?.addEventListener('resize',fit);fit();
+addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,200));if(window.visualViewport)visualViewport.addEventListener('resize',fit);fit();
 
 /* ---------- votes ---------- */
 document.querySelectorAll('.vote').forEach(v=>{
