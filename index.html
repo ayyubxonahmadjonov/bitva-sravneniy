@@ -18,7 +18,7 @@
   --r:22px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--ink);font-family:"Golos Text",system-ui,sans-serif;color:var(--ink)}
+html,body{height:100%;overflow:hidden;background-color:var(--bg);background-image:linear-gradient(rgba(0,0,0,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(0,0,0,.045) 2px,transparent 2px);background-size:50px 50px;font-family:"Golos Text",system-ui,sans-serif;color:var(--ink)}
 button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
 
 /* ---------- stage (fixed 1600x900, scaled to fit) ---------- */
@@ -73,13 +73,27 @@ mark{background:var(--yellow);padding:0 .15em;border-radius:6px;color:inherit}
 .slide > *:not(.floaters){position:relative;z-index:1}
 
 /* ---------- chrome: progress, controls ---------- */
-#progress{position:absolute;left:0;bottom:0;height:10px;background:var(--pink);border-top:3px solid var(--ink);transition:width .5s;z-index:50}
-#hud{position:absolute;right:22px;bottom:22px;display:flex;gap:10px;z-index:50;align-items:center;opacity:.35;transition:opacity .25s}
+#progress{position:fixed;left:0;bottom:0;height:10px;background:var(--pink);border-top:3px solid var(--ink);transition:width .5s;z-index:50}
+#hud{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:50;align-items:center;opacity:.35;transition:opacity .25s}
 #hud:hover{opacity:1}
-#hud button{width:50px;height:50px;border:4px solid var(--ink);border-radius:14px;background:var(--paper);font-size:24px;box-shadow:4px 4px 0 var(--ink);font-family:"Unbounded";font-weight:700}
+#hud button{width:46px;height:46px;border:4px solid var(--ink);border-radius:14px;background:var(--paper);font-size:24px;box-shadow:4px 4px 0 var(--ink);font-family:"Unbounded";font-weight:700}
 #hud button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
 #hud #uzBtn{width:auto;padding:0 14px;font-size:18px}
 body.no-uz #uzBtn{opacity:.45}
+@media (hover:none){#hud{opacity:.6}}
+@media (max-width:900px),(max-height:500px){
+  #hud{gap:6px;right:8px;bottom:8px}
+  #hud button{width:36px;height:36px;font-size:17px;border-width:3px;border-radius:10px;box-shadow:2px 2px 0 var(--ink)}
+  #hud #uzBtn{font-size:13px;padding:0 8px}
+  #counter{font-size:13px;padding:9px 10px;min-width:64px;border-radius:10px}
+  #progress{height:6px;border-top-width:2px}
+}
+#rotate{display:none;position:fixed;left:12px;right:12px;top:max(12px,env(safe-area-inset-top));z-index:60;background:var(--yellow);border:3px solid var(--ink);border-radius:14px;box-shadow:3px 3px 0 var(--ink);
+  padding:10px 44px 10px 14px;font-weight:700;font-size:15px;line-height:1.3}
+#rotate span{font-size:20px;margin-right:4px}
+#rotate button{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:18px;width:30px;height:30px}
+@media (orientation:portrait) and (max-width:900px){#rotate{display:block}}
+body.rotate-off #rotate{display:none}
 #counter{font-family:"Unbounded";font-weight:700;font-size:18px;background:var(--ink);color:#fff;border-radius:12px;padding:12px 14px;min-width:96px;text-align:center}
 
 /* ---------- 1. title ---------- */
@@ -477,6 +491,7 @@ td:first-child{font-weight:700}
   <button id="vLang" title="RU / EN">RU</button>
 </section>
 
+</div></div>
 <div id="progress"></div>
 <div id="hud">
   <button id="uzBtn" title="O'zbekcha izohlar (U)">🇺🇿 UZ</button>
@@ -485,7 +500,8 @@ td:first-child{font-weight:700}
   <div id="counter">1 / 1</div>
   <button id="nextBtn" title="Вперёд">→</button>
 </div>
-</div></div>
+
+<div id="rotate"><span>📱🔄</span> Telefonni yotqizing — shunda slaydlar kattaroq ko'rinadi <button aria-label="Yopish">✕</button></div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script>
@@ -562,13 +578,14 @@ addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0]
 function toggleFs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.()}
 function toggleUz(){document.body.classList.toggle('no-uz');try{localStorage.setItem('noUz',document.body.classList.contains('no-uz')?'1':'')}catch(e){}}
 document.getElementById('fsBtn').onclick=toggleFs;
+document.querySelector('#rotate button').onclick=()=>document.body.classList.add('rotate-off');
 document.getElementById('uzBtn').onclick=toggleUz;
 try{if(localStorage.getItem('noUz'))document.body.classList.add('no-uz')}catch(e){}
 
 /* scale stage */
 const stage=document.getElementById('stage');
-function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
-addEventListener('resize',fit);fit();
+function fit(){const vv=window.visualViewport,w=vv?vv.width:innerWidth,h=vv?vv.height:innerHeight,s=Math.min(w/1600,h/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,200));window.visualViewport?.addEventListener('resize',fit);fit();
 
 /* ---------- votes ---------- */
 document.querySelectorAll('.vote').forEach(v=>{
