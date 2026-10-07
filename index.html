@@ -7,7 +7,7 @@
 <meta name="description" content="Степени сравнения прилагательных — интерактивная презентация-шоу">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;700;900&family=PT+Serif&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
 <style>
 :root{
@@ -22,8 +22,8 @@ html,body{height:100%;overflow:hidden;background:var(--ink);font-family:"Golos T
 button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
 
 /* ---------- stage (fixed 1600x900, scaled to fit) ---------- */
-#viewport{position:fixed;inset:0;display:grid;place-items:center}
-#stage{width:1600px;height:900px;position:relative;overflow:hidden;background:var(--bg);
+#viewport{position:fixed;inset:0;overflow:hidden}
+#stage{width:1600px;height:900px;position:absolute;left:50%;top:50%;overflow:hidden;background:var(--bg);
   background-image:linear-gradient(rgba(0,0,0,.045) 2px,transparent 2px),linear-gradient(90deg,rgba(0,0,0,.045) 2px,transparent 2px);
   background-size:50px 50px;transform-origin:center center;flex:none}
 
@@ -212,6 +212,17 @@ td:first-child{font-weight:700}
 @keyframes spin{to{transform:rotate(360deg)}}
 .bg-c .end{color:#fff;background:var(--ink);border-radius:6px;padding:0 2px}
 .bg-c .uz,.bg-y .uz,.bg-g .uz,.bg-o .uz{color:#0d4a36}
+/* ---------- final video (russian subtitles over the baked-in english) ---------- */
+#videoSlide{padding:0;background:#FEFEFE}
+#videoSlide video{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+#videoSlide .vcap{position:absolute;z-index:2;background:#FEFEFE;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+  font-family:"PT Serif",Georgia,serif;font-size:72px;line-height:1.6;color:#222;text-align:center;opacity:0;transition:opacity .12s}
+.vcap span{opacity:0;transition:opacity .35s}
+#videoSlide .vcap.on,.vcap span.on{opacity:1}
+#videoSlide.en .vcap{display:none}
+#vLang,#vSound{position:absolute;top:22px;z-index:5;border:4px solid var(--ink);border-radius:12px;background:#fff;font-family:"Unbounded";font-weight:700;font-size:18px;padding:8px 14px;opacity:.25;transition:opacity .2s}
+#vLang{right:22px} #vSound{right:110px;display:none}
+#vLang:hover,#vSound:hover{opacity:1}
 .wiggle{display:inline-block;animation:clash 2s ease-in-out infinite}
 </style>
 </head>
@@ -456,6 +467,16 @@ td:first-child{font-weight:700}
   </div>
 </section>
 
+<!-- 22 ───────── THE END (video) -->
+<section class="slide" id="videoSlide">
+  <video id="endVideo" src="end.mp4" playsinline preload="auto"></video>
+  <!-- boxes are placed exactly over the english text in the video (1024x576 → 1600x900) -->
+  <div class="vcap" id="cap1" style="left:664px;top:320px;width:750px;height:258px"><span>Вот и конец</span><span>нашей презентации</span></div>
+  <div class="vcap" id="cap2" style="left:234px;top:320px;width:508px;height:258px"><span>Спасибо</span><span>за внимание!</span></div>
+  <button id="vSound" title="Звук">🔊</button>
+  <button id="vLang" title="RU / EN">RU</button>
+</section>
+
 <div id="progress"></div>
 <div id="hud">
   <button id="uzBtn" title="O'zbekcha izohlar (U)">🇺🇿 UZ</button>
@@ -522,6 +543,7 @@ function go(n){
   history.replaceState(null,'','#'+(n+1));
   if(slides[n].id==='endSlide') setTimeout(()=>{boom();boom({angle:60,origin:{x:0,y:.7}});boom({angle:120,origin:{x:1,y:.7}})},500);
   if(slides[n].id!=='speedSlide') stopSpeed();
+  slides[n].id==='videoSlide' ? playEnd() : endVideo.pause();
 }
 document.getElementById('nextBtn').onclick=()=>go(cur+1);
 document.getElementById('prevBtn').onclick=()=>go(cur-1);
@@ -545,7 +567,7 @@ try{if(localStorage.getItem('noUz'))document.body.classList.add('no-uz')}catch(e
 
 /* scale stage */
 const stage=document.getElementById('stage');
-function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`scale(${s})`}
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);fit();
 
 /* ---------- votes ---------- */
@@ -634,6 +656,30 @@ spGo.onclick=()=>{
     if(t<=0){stopSpeed();spT.textContent='⏰';spA.classList.add('on');sfx.ok();spGo.textContent='▶ Следующее слово'}
   },100);
 };
+
+/* final video: show russian lines in sync with the english ones baked into the video */
+const endVideo=document.getElementById('endVideo'), vSlide=document.getElementById('videoSlide'), vSound=document.getElementById('vSound');
+const CAPS=[ // [box, box visible from–to, line start times]
+  [document.getElementById('cap1'), .45, 4.3, [.5,.7]],
+  [document.getElementById('cap2'), 8.45, 13.75, [8.5,9.1]],
+];
+function syncCaps(){
+  const t=endVideo.currentTime;
+  CAPS.forEach(([box,from,to,lines])=>{
+    const on=t>=from&&t<to; box.classList.toggle('on',on);
+    [...box.children].forEach((sp,i)=>sp.classList.toggle('on',on&&t>=lines[i]));
+  });
+  if(!endVideo.paused) requestAnimationFrame(syncCaps);
+}
+endVideo.addEventListener('play',()=>requestAnimationFrame(syncCaps));
+endVideo.addEventListener('seeked',syncCaps);
+function playEnd(){
+  endVideo.currentTime=0; endVideo.muted=false; vSound.style.display='none';
+  endVideo.play().catch(()=>{endVideo.muted=true;vSound.style.display='block';endVideo.play().catch(()=>{})});
+}
+vSound.onclick=()=>{endVideo.muted=false;vSound.style.display='none'};
+document.getElementById('vLang').onclick=e=>{vSlide.classList.toggle('en');e.target.textContent=vSlide.classList.contains('en')?'EN':'RU'};
+endVideo.addEventListener('click',()=>{endVideo.paused?endVideo.play():endVideo.pause()});
 
 /* end slide */
 document.getElementById('boom').onclick=()=>{boom({particleCount:200,spread:120});sfx.ok()};
