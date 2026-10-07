@@ -223,7 +223,7 @@ table{width:100%;border-collapse:separate;border-spacing:0;margin-top:22px;backg
 th,td{padding:16px 22px;font-size:28px;text-align:left;border-bottom:3px solid var(--ink)}
 th{font-family:"Unbounded";font-size:22px;background:var(--ink);color:#fff}
 tr:last-child td{border-bottom:none}
-td:first-child{font-weight:700}
+td:first-child{font-weight:700;white-space:nowrap}
 
 .spin{display:inline-block;animation:spin 8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -240,6 +240,19 @@ td:first-child{font-weight:700}
 #vLang,#vSound{position:absolute;top:22px;z-index:5;border:4px solid var(--ink);border-radius:12px;background:#fff;font-family:"Unbounded";font-weight:700;font-size:18px;padding:8px 14px;opacity:.25;transition:opacity .2s}
 #vLang{right:22px} #vSound{right:110px;display:none}
 #vLang:hover,#vSound:hover{opacity:1}
+.flips.four{grid-template-columns:repeat(4,1fr);gap:30px;margin-top:30px}
+.flips.four .flip{height:400px}
+.flips.four .big{font-size:96px}
+.flips.four .w{font-size:36px}
+.flip .f .uz{font-size:22px}
+.ex .uz{font-size:21px;margin-top:2px}
+.err .good .uz{font-size:18px;font-family:"Golos Text"}
+.err .bad,.err .good{display:flex;flex-direction:column;justify-content:center}
+.say .tpl .uz{font-size:20px;font-weight:500}
+.quz{font-size:26px;margin:-22px 0 30px}
+.qmsg .uz{font-size:22px}
+.sword .uz{font-size:30px;font-family:"Golos Text"}
+.sans .uz{font-size:28px;font-family:"Golos Text";color:var(--uz)}
 .wiggle{display:inline-block;animation:clash 2s ease-in-out infinite}
 </style>
 </head>
@@ -286,152 +299,104 @@ td:first-child{font-weight:700}
   </div>
 </section>
 
-<!-- 4 ───────── COMPARATIVE -ЕЕ -->
+<!-- 4 ───────── COMPARATIVE -->
 <section class="slide">
   <span class="kicker a">LVL 2 · Сравнительная 🐯</span>
-  <h2 class="a" style="--d:1">Секретная формула</h2>
-  <div class="formula a" style="--d:2;margin-top:22px">
+  <h2 class="a" style="--d:1">Как сказать «больше»?</h2>
+  <p class="a" style="--d:2">Добавляем <mark>-ее</mark> — и готово!<span class="uz">Sifatga "-ее" qo'shamiz — xuddi o'zbekchadagi "-roq" kabi: tez → tezroq</span></p>
+  <div class="formula a" style="--d:3;margin-top:18px">
     <span>быстр<s style="opacity:.35">ый</s></span><span>+</span><span class="sticker bg-y">-ЕЕ</span><span>=</span><span class="sticker bg-p">быстрЕЕ 🚀</span>
-    <span class="uz" style="font-family:'Golos Text';font-size:24px;width:100%">O'zbekchadagi "-roq" bilan bir xil: tez → tezroq</span>
   </div>
   <div class="ex-grid">
-    <div class="ex a" style="--d:3"><span class="ico">🧠</span>умный <span class="arr">→</span> умн<span class="end">ее</span></div>
-    <div class="ex a" style="--d:4"><span class="ico">🎬</span>интересный <span class="arr">→</span> интересн<span class="end">ее</span></div>
-    <div class="ex a" style="--d:5"><span class="ico">💅</span>красивый <span class="arr">→</span> красив<span class="end">ее</span></div>
-    <div class="ex a" style="--d:6"><span class="ico">💪</span>сильный <span class="arr">→</span> сильн<span class="end">ее</span></div>
+    <div class="ex a" style="--d:4"><span class="ico">🧠</span>умный → умн<span class="end">ее</span><span class="uz">aqlli → aqlliroq</span></div>
+    <div class="ex a" style="--d:5"><span class="ico">💅</span>красивый → красив<span class="end">ее</span><span class="uz">chiroyli → chiroyliroq</span></div>
+    <div class="ex a" style="--d:6"><span class="ico">💸</span>дорогой → доро<span class="end">же</span> <small class="sticker bg-c" style="font-size:16px;padding:2px 8px">иногда -е</small><span class="uz">qimmat → qimmatroq (ba'zan faqat "-e")</span></div>
+    <div class="ex a" style="--d:7"><span class="ico">📢</span>громкий → гром<span class="end">че</span> <small class="sticker bg-c" style="font-size:16px;padding:2px 8px">иногда -е</small><span class="uz">baland ovozli → balandroq</span></div>
   </div>
-  <div class="card a bg-y" style="--d:7;margin-top:30px;display:flex;align-items:center;gap:26px">
-    <span style="font-size:70px">🐆🐢</span>
+  <div class="card a bg-y" style="--d:8;margin-top:24px;display:flex;align-items:center;gap:26px;padding:20px 30px">
+    <span style="font-size:64px">🐆🐢</span>
     <div><p style="font-size:34px;font-weight:900">Гепард быстрее, <mark class="hl-p">чем</mark> черепаха.</p><span class="uz" style="font-size:24px">«чем» = «-dan»: Gepard toshbaqa<b>dan</b> tezroq</span></div>
   </div>
 </section>
 
-<!-- 5 ───────── -Е LIFEHACK -->
-<section class="slide">
-  <span class="kicker a">LVL 2 · Лайфхак 🛠️</span>
-  <h2 class="a" style="--d:1">Иногда только <span class="sticker bg-p" style="font-size:60px">-Е</span></h2>
-  <p class="a" style="--d:2">…и буква перед ним меняется. Звучит страшно, но это просто для удобства произношения 😌<span class="uz">Ba'zan faqat "-e" qo'shiladi va oldingi harf o'zgaradi — talaffuz oson bo'lishi uchun</span></p>
-  <div class="ex-grid" style="grid-template-columns:repeat(3,1fr)">
-    <div class="ex a" style="--d:3"><span class="ico">💸</span>дорогой → доро<span class="end">же</span></div>
-    <div class="ex a" style="--d:4"><span class="ico">👶</span>молодой → моло<span class="end">же</span></div>
-    <div class="ex a" style="--d:5"><span class="ico">📢</span>громкий → гром<span class="end">че</span></div>
-    <div class="ex a" style="--d:6"><span class="ico">🤫</span>тихий → ти<span class="end">ше</span></div>
-    <div class="ex a" style="--d:7"><span class="ico">😌</span>простой → про<span class="end">ще</span></div>
-    <div class="ex a" style="--d:8"><span class="ico">🔥</span>жаркий → жар<span class="end">че</span></div>
-  </div>
-  <div class="row a" style="--d:9;margin-top:34px;justify-content:center;gap:24px">
-    <span class="sticker bg-c" style="font-size:30px">г · д · з → Ж</span>
-    <span class="sticker bg-y" style="font-size:30px">к · т → Ч</span>
-    <span class="sticker bg-g" style="font-size:30px">х → Ш</span>
-    <span class="sticker bg-v" style="font-size:30px">ст → Щ</span>
-  </div>
-</section>
-
-<!-- 6 ───────── IRREGULAR -->
+<!-- 5 ───────── IRREGULAR -->
 <section class="slide">
   <span class="kicker a">Внимание! Бунтари 😈</span>
-  <h2 class="a" style="--d:1">Они не слушают правила</h2>
-  <p class="a" style="--d:2">Нажми на карточку и угадай форму! 👆<span class="uz">Kartani bosing — shaklini toping. Bularni yodlash kerak!</span></p>
-  <div class="flips">
-    <div class="flip a" style="--d:3"><div class="in"><div class="f"><div class="big">👍</div><div class="w">хороший</div><div class="q">→ ???</div></div><div class="bk bg-g"><div class="big">🏆</div><div class="w">ЛУЧШЕ</div><span class="uz">yaxshiroq</span></div></div></div>
-    <div class="flip a" style="--d:4"><div class="in"><div class="f"><div class="big">👎</div><div class="w">плохой</div><div class="q">→ ???</div></div><div class="bk bg-p"><div class="big">💀</div><div class="w">ХУЖЕ</div><span class="uz" style="color:#fff">yomonroq</span></div></div></div>
-    <div class="flip a" style="--d:5"><div class="in"><div class="f"><div class="big">🐘</div><div class="w">большой</div><div class="q">→ ???</div></div><div class="bk bg-y"><div class="big">🐘🐘</div><div class="w">БОЛЬШЕ</div><span class="uz">kattaroq</span></div></div></div>
-    <div class="flip a" style="--d:6"><div class="in"><div class="f"><div class="big">🐜</div><div class="w">маленький</div><div class="q">→ ???</div></div><div class="bk bg-c"><div class="big">🔬</div><div class="w">МЕНЬШЕ</div><span class="uz">kichikroq</span></div></div></div>
-    <div class="flip a" style="--d:7"><div class="in"><div class="f"><div class="big">🦒</div><div class="w">высокий</div><div class="q">→ ???</div></div><div class="bk bg-o"><div class="big">🚀</div><div class="w">ВЫШЕ</div><span class="uz">balandroq</span></div></div></div>
-    <div class="flip a" style="--d:8"><div class="in"><div class="f"><div class="big">🐁</div><div class="w">низкий</div><div class="q">→ ???</div></div><div class="bk bg-v"><div class="big">⬇️</div><div class="w">НИЖЕ</div><span class="uz" style="color:#fff">pastroq</span></div></div></div>
-    <div class="flip a" style="--d:9"><div class="in"><div class="f"><div class="big">🪶</div><div class="w">лёгкий</div><div class="q">→ ???</div></div><div class="bk bg-g"><div class="big">🎈</div><div class="w">ЛЕГЧЕ</div><span class="uz">yengilroq</span></div></div></div>
-    <div class="flip a" style="--d:10"><div class="in"><div class="f"><div class="big">💰</div><div class="w">богатый</div><div class="q">→ ???</div></div><div class="bk bg-y"><div class="big">🤑</div><div class="w">БОГАЧЕ</div><span class="uz">boyroq</span></div></div></div>
+  <h2 class="a" style="--d:1">Эти слова — исключения</h2>
+  <p class="a" style="--d:2">Нажми на карточку и угадай! 👆<span class="uz">Bu so'zlar qoidaga bo'ysunmaydi — ularni yodlab olish kerak. Kartani bosing!</span></p>
+  <div class="flips four">
+    <div class="flip a" style="--d:3"><div class="in"><div class="f"><div class="big">👍</div><div class="w">хороший</div><span class="uz">yaxshi</span><div class="q">→ ???</div></div><div class="bk bg-g"><div class="big">🏆</div><div class="w">ЛУЧШЕ</div><span class="uz">yaxshiroq</span></div></div></div>
+    <div class="flip a" style="--d:4"><div class="in"><div class="f"><div class="big">👎</div><div class="w">плохой</div><span class="uz">yomon</span><div class="q">→ ???</div></div><div class="bk bg-p"><div class="big">💀</div><div class="w">ХУЖЕ</div><span class="uz" style="color:#fff">yomonroq</span></div></div></div>
+    <div class="flip a" style="--d:5"><div class="in"><div class="f"><div class="big">🐘</div><div class="w">большой</div><span class="uz">katta</span><div class="q">→ ???</div></div><div class="bk bg-y"><div class="big">🐘🐘</div><div class="w">БОЛЬШЕ</div><span class="uz">kattaroq</span></div></div></div>
+    <div class="flip a" style="--d:6"><div class="in"><div class="f"><div class="big">🐜</div><div class="w">маленький</div><span class="uz">kichik</span><div class="q">→ ???</div></div><div class="bk bg-c"><div class="big">🔬</div><div class="w">МЕНЬШЕ</div><span class="uz">kichikroq</span></div></div></div>
   </div>
 </section>
 
-<!-- 7 ───────── SUPERLATIVE -->
+<!-- 6 ───────── SUPERLATIVE -->
 <section class="slide">
   <span class="kicker a">LVL 3 · Превосходная 🦁</span>
   <h2 class="a" style="--d:1">Как стать «самым» 👑</h2>
-  <div class="row" style="margin-top:28px;flex:1">
-    <div class="card grow a" style="--d:2">
-      <span class="sticker bg-y">Способ 1 · разговорный 🗣️</span>
-      <div class="formula" style="margin:22px 0 18px;font-size:34px"><span class="sticker bg-p" style="font-size:34px">САМЫЙ</span>+<span style="font-size:28px">прилагательное</span></div>
-      <ul style="list-style:none;display:grid;gap:12px">
-        <li>🧑 <b>самый</b> умный студент</li>
-        <li>👩 <b>самая</b> красивая девушка</li>
-        <li>🍰 <b>самое</b> вкусное пирожное</li>
-        <li>👯 <b>самые</b> лучшие друзья</li>
+  <p class="a" style="--d:2">Просто ставим <mark>самый</mark> перед словом.<span class="uz">"самый" = "eng". Sifat oldiga qo'yamiz: eng aqlli, eng chiroyli</span></p>
+  <div class="row" style="margin-top:26px;flex:1;align-items:flex-start">
+    <div class="card a" style="--d:3;flex:1.1">
+      <div class="formula" style="margin-bottom:22px;font-size:34px"><span class="sticker bg-p" style="font-size:34px">САМЫЙ</span>+<span style="font-size:30px">прилагательное</span></div>
+      <ul style="list-style:none;display:grid;gap:14px">
+        <li>🧑 <b>самый</b> умный студент<span class="uz">eng aqlli talaba</span></li>
+        <li>👩 <b>самая</b> красивая девушка<span class="uz">eng chiroyli qiz</span></li>
+        <li>🍰 <b>самое</b> вкусное пирожное<span class="uz">eng mazali pirojniy</span></li>
       </ul>
-      <span class="uz" style="font-size:24px;margin-top:14px">"самый" = "eng". Rod bo'yicha o'zgaradi: самый / самая / самое / самые</span>
     </div>
-    <div class="card grow a tilt-r bg-c" style="--d:4">
-      <span class="sticker bg-paper" style="background:#fff">Способ 2 · книжный 📚</span>
-      <div class="formula" style="margin:22px 0 18px;font-size:36px"><span>основа</span>+<span class="sticker bg-y" style="font-size:34px">-ЕЙШИЙ</span></div>
-      <ul style="list-style:none;display:grid;gap:12px">
-        <li>🧠 умн<span class="end">ейший</span> человек</li>
-        <li>🎬 интересн<span class="end">ейший</span> фильм</li>
-        <li>🏛️ велич<span class="end">айший</span> поэт</li>
-      </ul>
-      <span class="uz" style="font-size:24px;margin-top:14px">Kitoblarda va rasmiy nutqda ko'proq ishlatiladi</span>
+    <div class="card a tilt-r bg-y" style="--d:5;flex:.9">
+      <h3 style="font-size:28px;margin-bottom:14px">💡 Запомни</h3>
+      <p style="font-size:26px">«самый» меняется как обычное прилагательное:</p>
+      <p style="font-family:Unbounded;font-weight:900;font-size:30px;margin-top:12px">самый · самая · самое · самые</p>
+      <span class="uz" style="font-size:22px;margin-top:12px">"самый" so'zi ham rodga qarab o'zgaradi: erkak (самый), ayol (самая), o'rta (самое), ko'plik (самые)</span>
     </div>
   </div>
 </section>
 
-<!-- 8 ───────── AWARDS -->
+<!-- 7 ───────── AWARDS -->
 <section class="slide">
-    <span class="kicker a">Студенческая премия 🎤</span>
+  <span class="kicker a">Студенческая премия 🏆</span>
   <h2 class="a" style="--d:1">Самое-самое в жизни студента</h2>
-  <p class="a" style="--d:2">Нажми, чтобы открыть победителя 👇<span class="uz">G'olibni ko'rish uchun bosing</span></p>
+  <p class="a" style="--d:2">Нажми, чтобы открыть победителя 👇<span class="uz">Talaba hayotidagi "eng-eng"lari — g'olibni ko'rish uchun bosing</span></p>
   <div class="awards">
-    <div class="card award a" style="--d:3"><span class="medal">💸</span><div><div class="t">Самая быстрая вещь в мире —</div><div class="a2">стипендия</div><div class="why">пришла и сразу ушла 🏃‍♂️<span class="uz">keldi-yu, ketdi</span></div></div></div>
-    <div class="card award a" style="--d:4"><span class="medal">😴</span><div><div class="t">Самая длинная пара —</div><div class="a2">первая, в 8:00</div><div class="why">длиннее, чем вся жизнь<span class="uz">butun umrdan uzunroq</span></div></div></div>
-    <div class="card award a" style="--d:5"><span class="medal">🔋</span><div><div class="t">Самый лучший друг студента —</div><div class="a2">зарядка</div><div class="why">важнее, чем завтрак<span class="uz">nonushtadan muhimroq</span></div></div></div>
-    <div class="card award a" style="--d:6"><span class="medal">⚡</span><div><div class="t">Самая сильная мотивация —</div><div class="a2">«завтра экзамен»</div><div class="why">сильнее, чем кофе ☕<span class="uz">kofedan kuchliroq</span></div></div></div>
-    <div class="card award a" style="--d:7"><span class="medal">⏰</span><div><div class="t">Самый страшный звук —</div><div class="a2">будильник</div><div class="why">страшнее, чем фильм ужасов 👻<span class="uz">qo'rqinchli filmdan qo'rqinchliroq</span></div></div></div>
-    <div class="card award a" style="--d:8"><span class="medal">🍜</span><div><div class="t">Самая популярная еда в общежитии —</div><div class="a2">доширак</div><div class="why">дешевле не бывает<span class="uz">bundan arzoni yo'q</span></div></div></div>
+    <div class="card award a" style="--d:3"><span class="medal">💸</span><div><div class="t">Самая быстрая вещь в мире —</div><div class="a2">стипендия</div><div class="why">пришла и сразу ушла 🏃‍♂️<span class="uz">Dunyodagi eng tez narsa — stipendiya: keldi-yu, ketdi</span></div></div></div>
+    <div class="card award a" style="--d:4"><span class="medal">😴</span><div><div class="t">Самая длинная пара —</div><div class="a2">первая, в 8:00</div><div class="why">длиннее, чем вся жизнь<span class="uz">Eng uzun dars — ertalabki 8:00 dagi</span></div></div></div>
+    <div class="card award a" style="--d:5"><span class="medal">🔋</span><div><div class="t">Самый лучший друг студента —</div><div class="a2">зарядка</div><div class="why">важнее, чем завтрак<span class="uz">Talabaning eng yaqin do'sti — zaryadka</span></div></div></div>
+    <div class="card award a" style="--d:6"><span class="medal">⏰</span><div><div class="t">Самый страшный звук —</div><div class="a2">будильник</div><div class="why">страшнее, чем фильм ужасов 👻<span class="uz">Eng qo'rqinchli ovoz — budilnik</span></div></div></div>
   </div>
 </section>
 
-<!-- 9 ───────── MISTAKES -->
+<!-- 8 ───────── MISTAKES -->
 <section class="slide">
   <span class="kicker a">Стоп! Ошибки 🚫</span>
-  <h2 class="a" style="--d:1">Не надо «двойной порции»</h2>
-  <p class="a" style="--d:2">Один способ — не два сразу! Это как сказать «eng yaxshiroq» 😅<span class="uz">Ikki usulni birga ishlatmang — xuddi "eng yaxshiroq" degandek xato</span></p>
+  <h2 class="a" style="--d:1">Так говорить нельзя</h2>
+  <p class="a" style="--d:2">Не используй два способа сразу!<span class="uz">Ikki usulni birga ishlatmang — bu xuddi "eng yaxshiroq" deyishdek xato 😅</span></p>
   <div class="errs">
-    <div class="err a" style="--d:3"><div class="bad">более лучше</div><div class="arrow">👉</div><div class="good">лучше ✅</div></div>
-    <div class="err a" style="--d:4"><div class="bad">более красивее</div><div class="arrow">👉</div><div class="good">красивее / более красивый ✅</div></div>
-    <div class="err a" style="--d:5"><div class="bad">самый умнейший</div><div class="arrow">👉</div><div class="good">самый умный / умнейший ✅</div></div>
-    <div class="err a" style="--d:6"><div class="bad">хорошее, чем…</div><div class="arrow">👉</div><div class="good">лучше, чем… ✅</div></div>
+    <div class="err a" style="--d:3"><div class="bad">более лучше</div><div class="arrow">👉</div><div class="good">лучше ✅<span class="uz">yaxshiroq</span></div></div>
+    <div class="err a" style="--d:4"><div class="bad">более красивее</div><div class="arrow">👉</div><div class="good">красивее ✅<span class="uz">chiroyliroq</span></div></div>
+    <div class="err a" style="--d:5"><div class="bad">хорошее, чем…</div><div class="arrow">👉</div><div class="good">лучше, чем… ✅<span class="uz">…dan yaxshiroq</span></div></div>
   </div>
 </section>
 
-<!-- 10 ───────── HOW TO ARGUE -->
-<section class="slide">
-  <span class="kicker a">Перед битвой 🗣️</span>
-  <h2 class="a" style="--d:1">Как спорить по-русски</h2>
-  <p class="a" style="--d:2">Эти фразы нужны для следующих раундов!<span class="uz">Keyingi raundlar uchun shu iboralar kerak bo'ladi</span></p>
-  <div class="phrases">
-    <div class="phrase bg-y a" style="--d:3"><div class="em">🤔</div><div class="p1">По-моему, …</div><span class="uz">Menimcha, …</span></div>
-    <div class="phrase bg-c a" style="--d:4"><div class="em">💬</div><div class="p1">Я думаю, что А лучше, чем Б</div><span class="uz">Menimcha, A B dan yaxshiroq</span></div>
-    <div class="phrase bg-g a" style="--d:5"><div class="em">🤝</div><div class="p1">Я согласен / согласна!</div><span class="uz">Qo'shilaman!</span></div>
-    <div class="phrase bg-p a" style="--d:6"><div class="em">🙅</div><div class="p1">Я не согласен!</div><span class="uz" style="color:#fff">Qo'shilmayman!</span></div>
-    <div class="phrase bg-o a" style="--d:7"><div class="em">😤</div><div class="p1">Ни за что!</div><span class="uz">Hech qachon!</span></div>
-    <div class="phrase bg-v a" style="--d:8"><div class="em">💯</div><div class="p1">Это точно!</div><span class="uz" style="color:#fff">Aynan shunday!</span></div>
-  </div>
-</section>
-
-<!-- 11-16 ───────── BATTLES (generated by JS) -->
+<!-- 9-11 ───────── BATTLES (generated by JS) -->
 <div id="battles"></div>
 
-<!-- 17 ───────── QUIZ -->
+<!-- 12 ───────── QUIZ -->
 <section class="slide" id="quizSlide">
-  <span class="kicker a">Проверим мозги 🧠</span>
+  <span class="kicker a">Проверим мозги 🧠 · Viktorina</span>
   <div class="quiz">
     <div class="qnum a" style="--d:1"></div>
     <div class="qtext a" style="--d:2"></div>
+    <div class="quz uz a" style="--d:2"></div>
     <div class="opts a" style="--d:3"></div>
     <div class="qmsg"></div>
     <div class="qfoot a" style="--d:4"><span class="score">⭐ 0</span><button class="btn" id="qNext">Следующий →</button></div>
   </div>
 </section>
 
-<!-- 18 ───────── SPEED -->
+<!-- 13 ───────── SPEED -->
 <section class="slide" id="speedSlide">
   <span class="kicker a">Скорость ⚡</span>
   <h2 class="a" style="--d:1">Скажи быстрее!</h2>
@@ -444,47 +409,21 @@ td:first-child{font-weight:700}
   </div>
 </section>
 
-<!-- 19 ───────── FINAL DEBATE -->
-<section class="slide">
-  <div class="floaters"><span style="right:6%;top:8%;font-size:100px">🔥</span></div>
-  <span class="kicker a">Финальный спор 🔥</span>
-  <h2 class="a" style="--d:1">Большие вопросы</h2>
-  <p class="a" style="--d:2">Выберите тему. Две команды. Говорим только по-русски! 😈<span class="uz">Mavzu tanlang. Ikki jamoa. Faqat ruscha gapiramiz!</span></p>
-  <div class="topics">
-    <div class="card topic a" style="--d:3"><div class="num bg-y">1</div><div><div class="tx">Что важнее: ум 🧠 или красота ✨?</div><span class="uz" style="font-size:24px">Nima muhimroq: aql yoki go'zallik?</span></div></div>
-    <div class="card topic a tilt-l" style="--d:4"><div class="num bg-c">2</div><div><div class="tx">Что полезнее: книги 📚 или YouTube ▶️?</div><span class="uz" style="font-size:24px">Nima foydaliroq: kitob yoki YouTube?</span></div></div>
-    <div class="card topic a" style="--d:5"><div class="num bg-p">3</div><div><div class="tx">Где жизнь лучше: в городе 🏙️ или в деревне 🌾?</div><span class="uz" style="font-size:24px">Qayerda hayot yaxshiroq: shaharda yoki qishloqda?</span></div></div>
-  </div>
-</section>
-
-<!-- 20 ───────── CHEAT SHEET -->
+<!-- 14 ───────── CHEAT SHEET -->
 <section class="slide">
   <span class="kicker a">Шпаргалка 📝</span>
   <h2 class="a" style="--d:1">Всё на одной странице</h2>
+  <p class="a" style="--d:2">Сфотографируй — пригодится! 📸<span class="uz">Rasmga olib qo'ying — hammasi bitta jadvalda</span></p>
   <table class="a" style="--d:2">
-    <tr><th>Уровень</th><th>Как образуется</th><th>Пример</th><th>🇺🇿</th></tr>
-    <tr><td>🐱 Положительная</td><td>просто прилагательное</td><td>умный</td><td>aqlli</td></tr>
-    <tr><td>🐯 Сравнительная</td><td>-ее / -е  или  более + прил.</td><td>умнее, чем… / более умный</td><td>aqlliroq</td></tr>
-    <tr><td>😈 Бунтари</td><td>учим наизусть</td><td>лучше, хуже, больше, меньше</td><td>yodlaymiz</td></tr>
-    <tr><td>🦁 Превосходная</td><td>самый + прил.  /  -ейший</td><td>самый умный / умнейший</td><td>eng aqlli</td></tr>
+    <tr><th>Уровень</th><th>Как?</th><th>Пример</th><th>🇺🇿 O'zbekcha</th></tr>
+    <tr><td>🐱 Положительная</td><td>просто слово</td><td>умный</td><td>aqlli</td></tr>
+    <tr><td>🐯 Сравнительная</td><td>-ее + чем</td><td>умнее, чем ты 😏</td><td>sendan aqlliroq</td></tr>
+    <tr><td>😈 Исключения</td><td>учим наизусть</td><td>лучше, хуже, больше, меньше</td><td>yodlaymiz</td></tr>
+    <tr><td>🦁 Превосходная</td><td>самый + слово</td><td>самый умный</td><td>eng aqlli</td></tr>
   </table>
 </section>
 
-<!-- 21 ───────── THANKS -->
-<section class="slide" id="endSlide">
-  <div class="floaters">
-    <span style="left:8%;top:14%">🏆</span><span style="left:85%;top:12%;animation-delay:-2s">🎉</span>
-    <span style="left:12%;top:70%;animation-delay:-1s">⭐</span><span style="left:83%;top:68%;animation-delay:-3s">🥇</span>
-  </div>
-  <div class="title-wrap">
-    <div class="mega a drop" style="font-size:130px"><span class="w1">СПАСИБО!</span></div>
-    <div class="subtitle a" style="--d:2;font-size:44px">Вы — <mark>самые лучшие</mark> слушатели 👑</div>
-    <p class="a" style="--d:3;margin-top:8px">…и намного умнее, чем были 20 минут назад 😉<span class="uz">…va 20 daqiqa oldingidan ancha aqlliroqsiz</span></p>
-    <button class="btn a" style="--d:4;margin-top:40px;font-size:30px" id="boom">🎉 Вопросы?</button>
-  </div>
-</section>
-
-<!-- 22 ───────── THE END (video) -->
+<!-- 15 ───────── THE END (video) -->
 <section class="slide" id="videoSlide">
   <video id="endVideo" src="end.mp4" playsinline preload="auto"></video>
   <!-- boxes are placed exactly over the english text in the video (1024x576 → 1600x900) -->
@@ -511,24 +450,21 @@ td:first-child{font-weight:700}
 <script>
 /* ---------- battles ---------- */
 const BATTLES = [
-  {q:"Кто умнее?",       uzq:"Kim aqlliroq?",            a:["🐱","Кошка","Mushuk"], b:["🐶","Собака","It"],        tpl:"<em>___</em> умнее, чем <em>___</em>.", c:"bg-c"},
-  {q:"Какой город красивее?", uzq:"Qaysi shahar chiroyliroq?", a:["🏙️","Ташкент","Toshkent"], b:["🕌","Самарканд","Samarqand"], tpl:"<em>___</em> красивее, чем <em>___</em>.", c:"bg-y"},
-  {q:"Что лучше?",       uzq:"Qaysi biri yaxshiroq?",     a:["🍏","iPhone","iPhone"], b:["🤖","Samsung","Samsung"], tpl:"По-моему, <em>___</em> лучше, потому что он <em>дешевле / быстрее…</em>", c:"bg-g"},
-  {q:"Что важнее?",      uzq:"Nima muhimroq?",            a:["💰","Деньги","Pul"], b:["❤️","Любовь","Muhabbat"],   tpl:"Я думаю, что <em>___</em> важнее, чем <em>___</em>.", c:"bg-p"},
-  {q:"Что страшнее?",    uzq:"Nima qo'rqinchliroq?",      a:["📝","Экзамен","Imtihon"], b:["🦷","Зубной врач","Tish shifokori"], tpl:"<em>___</em> страшнее, чем <em>___</em>. 😱", c:"bg-o"},
-  {q:"Кто строже?",      uzq:"Kim qattiqqo'lroq?",        a:["👩","Мама","Onam"], b:["👨‍🏫","Преподаватель","O'qituvchi"], tpl:"<em>___</em> строже, чем <em>___</em>. 😅", c:"bg-v"},
+  {q:"Что лучше?",    uzq:"Qaysi biri yaxshiroq?", a:["🍏","iPhone","iPhone"], b:["🤖","Samsung","Samsung"], tpl:"По-моему, <em>___</em> лучше, чем <em>___</em>.", uzt:"Menimcha, ___ ___dan yaxshiroq.", c:"bg-g"},
+  {q:"Что важнее?",   uzq:"Nima muhimroq?",        a:["💰","Деньги","Pul"], b:["❤️","Любовь","Muhabbat"], tpl:"Я думаю, что <em>___</em> важнее, чем <em>___</em>.", uzt:"Menimcha, ___ ___dan muhimroq.", c:"bg-p"},
+  {q:"Что страшнее?", uzq:"Nima qo'rqinchliroq?",  a:["📝","Экзамен","Imtihon"], b:["🦷","Зубной врач","Tish shifokori"], tpl:"<em>___</em> страшнее, чем <em>___</em>. 😱", uzt:"___ ___dan qo'rqinchliroq.", c:"bg-o"},
 ];
 document.getElementById('battles').outerHTML = BATTLES.map((x,i)=>`
 <section class="slide">
   <span class="kicker a">Раунд ${i+1} / ${BATTLES.length} ⚔️</span>
   <h2 class="a" style="--d:1">${x.q}</h2>
-  <p class="a" style="--d:2">Голосуем и объясняем почему!<span class="uz">${x.uzq} — ovoz bering va sababini ayting</span></p>
+  <p class="a" style="--d:2">Голосуем и объясняем почему!<span class="uz">${x.uzq} — ovoz bering, keyin pastdagi gap bilan ruscha javob bering</span></p>
   <div class="vs-wrap vote">
     <div class="side a" style="--d:3"><span class="em">${x.a[0]}</span><div class="nm">${x.a[1]}<small>${x.a[2]}</small></div><div class="bar"><i class="${x.c}"></i><b>0</b></div></div>
     <div class="vs a" style="--d:4">VS</div>
     <div class="side a" style="--d:5"><span class="em">${x.b[0]}</span><div class="nm">${x.b[1]}<small>${x.b[2]}</small></div><div class="bar"><i class="${x.c}"></i><b>0</b></div></div>
   </div>
-  <div class="say a" style="--d:6"><span class="lbl">Скажи 🎤</span><span class="tpl">${x.tpl}</span></div>
+  <div class="say a" style="--d:6"><span class="lbl">Скажи 🎤</span><span class="tpl">${x.tpl}<span class="uz">${x.uzt}</span></span></div>
 </section>`).join('');
 
 /* ---------- sounds (tiny WebAudio blips) ---------- */
@@ -561,7 +497,7 @@ function go(n){
   document.getElementById('counter').textContent=`${n+1} / ${slides.length}`;
   document.getElementById('progress').style.width=`${(n/(slides.length-1))*100}%`;
   history.replaceState(null,'','#'+(n+1));
-  if(slides[n].id==='endSlide') setTimeout(()=>{boom();boom({angle:60,origin:{x:0,y:.7}});boom({angle:120,origin:{x:1,y:.7}})},500);
+  if(slides[n].id==='videoSlide') setTimeout(()=>{boom();boom({angle:60,origin:{x:0,y:.7}});boom({angle:120,origin:{x:1,y:.7}})},500);
   if(slides[n].id!=='speedSlide') stopSpeed();
   slides[n].id==='videoSlide' ? playEnd() : endVideo.pause();
 }
@@ -623,14 +559,11 @@ document.querySelectorAll('.award').forEach(a=>a.addEventListener('click',()=>{
 
 /* ---------- quiz ---------- */
 const QUIZ=[
-  {q:"хороший → ?", o:["хорошее","лучше","более хорошо"], a:1},
-  {q:"дорогой → ?", o:["дорогее","дорожее","дороже"], a:2},
-  {q:"Слон ___ кошки 🐘🐱", o:["больше","большее","больший"], a:0},
-  {q:"Ташкент — ___ город Узбекистана 🏙️", o:["более большой","самый большой","больше"], a:1},
-  {q:"Где ошибка? 🕵️", o:["лучше","хуже","более лучше"], a:2},
-  {q:"Чай вкуснее, ___ кофе ☕", o:["чем","как","что"], a:0},
-  {q:"молодой → ?", o:["молодее","моложе","молодше"], a:1},
-  {q:"Это ___ фильм в мире! 🎬", o:["самый интересный","самый интереснее","более интереснейший"], a:0},
+  {q:"хороший → ?", uz:"yaxshi → yaxshiroq?", o:["хорошее","лучше","более хорошо"], a:1, ex:"хороший — исключение: хороший → лучше", exuz:"\"хороший\" — istisno so'z, yodlash kerak"},
+  {q:"дорогой → ?", uz:"qimmat → qimmatroq?", o:["дорогее","дороже","дорогой"], a:1, ex:"дорогой → дороже (иногда только -е)", exuz:"Ba'zan faqat \"-e\" qo'shiladi va harf o'zgaradi"},
+  {q:"Слон ___ кошки 🐘🐱", uz:"Fil mushukdan kattaroq", o:["больше","большой","самый"], a:0, ex:"большой → больше", exuz:"Qiyoslayapmiz — demak, qiyosiy daraja kerak"},
+  {q:"Ташкент — ___ город Узбекистана 🏙️", uz:"Toshkent — O'zbekistonning eng katta shahri", o:["больше","самый большой","более большой"], a:1, ex:"самый + прилагательное = «eng»", exuz:"\"eng\" = \"самый\""},
+  {q:"Чай вкуснее, ___ кофе ☕", uz:"Choy kofedan mazaliroq", o:["чем","как","что"], a:0, ex:"чем = «-dan»", exuz:"Solishtirganda \"чем\" ishlatiladi"},
 ];
 let qi=0,score=0,answered=false;
 const qs=document.getElementById('quizSlide');
@@ -638,6 +571,7 @@ function renderQ(){
   const x=QUIZ[qi];answered=false;
   qs.querySelector('.qnum').textContent=`Вопрос ${qi+1} из ${QUIZ.length}`;
   qs.querySelector('.qtext').textContent=x.q;
+  qs.querySelector('.quz').textContent=x.uz;
   qs.querySelector('.qmsg').textContent='';
   const box=qs.querySelector('.opts');box.innerHTML='';
   x.o.forEach((t,i)=>{
@@ -645,8 +579,8 @@ function renderQ(){
     b.onclick=()=>{
       if(answered){return}
       if(i===x.a){answered=true;b.classList.add('ok');score++;sfx.ok();boom({particleCount:80});
-        qs.querySelector('.qmsg').textContent=['Молодец! 🔥','Супер! 😎','Отлично! 🎯','Гений! 🧠'][Math.floor(Math.random()*4)];}
-      else{b.classList.add('no');sfx.no();qs.querySelector('.qmsg').textContent='Почти! Попробуй ещё 😅'}
+        qs.querySelector('.qmsg').innerHTML=['Молодец! 🔥','Супер! 😎','Отлично! 🎯','Гений! 🧠'][Math.floor(Math.random()*4)]+' '+x.ex+'<span class="uz">'+x.exuz+'</span>';}
+      else{b.classList.add('no');sfx.no();qs.querySelector('.qmsg').innerHTML='Почти! Попробуй ещё 😅<span class="uz">Yana bir urinib ko\'ring</span>'}
       qs.querySelector('.score').textContent=`⭐ ${score}`;
     };
     box.appendChild(b);
@@ -660,18 +594,17 @@ document.getElementById('qNext').onclick=()=>{
 renderQ();
 
 /* ---------- speed round ---------- */
-const WORDS=[["быстрый","быстрее"],["умный","умнее"],["хороший","лучше"],["плохой","хуже"],["дорогой","дороже"],["громкий","громче"],
-  ["простой","проще"],["красивый","красивее"],["весёлый","веселее"],["большой","больше"],["маленький","меньше"],["тёплый","теплее"],
-  ["холодный","холоднее"],["высокий","выше"],["сильный","сильнее"],["лёгкий","легче"],["тихий","тише"],["богатый","богаче"],
-  ["молодой","моложе"],["дешёвый","дешевле"],["интересный","интереснее"],["новый","новее"]];
+const WORDS=[["быстрый","быстрее","tez","tezroq"],["умный","умнее","aqlli","aqlliroq"],["хороший","лучше","yaxshi","yaxshiroq"],["плохой","хуже","yomon","yomonroq"],
+  ["красивый","красивее","chiroyli","chiroyliroq"],["большой","больше","katta","kattaroq"],["маленький","меньше","kichik","kichikroq"],["сильный","сильнее","kuchli","kuchliroq"],
+  ["дорогой","дороже","qimmat","qimmatroq"],["тёплый","теплее","iliq","iliqroq"],["холодный","холоднее","sovuq","sovuqroq"],["интересный","интереснее","qiziq","qiziqroq"]];
 let pool=[],spTimer=null;
 const spT=document.getElementById('spT'),spW=document.getElementById('spW'),spA=document.getElementById('spA'),spGo=document.getElementById('spGo'),ring=document.querySelector('.ring');
 function stopSpeed(){clearInterval(spTimer);spTimer=null}
 spGo.onclick=()=>{
   stopSpeed();
   if(!pool.length)pool=[...WORDS].sort(()=>Math.random()-.5);
-  const [w,a]=pool.pop();
-  spW.textContent=w;spA.textContent=a;spA.classList.remove('on');spGo.textContent='⏳ …';
+  const [w,a,wu,au]=pool.pop();
+  spW.innerHTML=w+'<span class="uz">'+wu+' → ?</span>';spA.innerHTML=a+'<span class="uz">'+au+'</span>';spA.classList.remove('on');spGo.textContent='⏳ …';
   let t=50;ring.style.setProperty('--p','0%');spT.textContent='5';
   spTimer=setInterval(()=>{
     t--;ring.style.setProperty('--p',`${(50-t)*2}%`);
@@ -705,7 +638,6 @@ document.getElementById('vLang').onclick=e=>{vSlide.classList.toggle('en');e.tar
 endVideo.addEventListener('click',()=>{endVideo.paused?endVideo.play():endVideo.pause()});
 
 /* end slide */
-document.getElementById('boom').onclick=()=>{boom({particleCount:200,spread:120});sfx.ok()};
 
 /* start */
 go(Math.max(0,(parseInt(location.hash.slice(1))||1)-1));
