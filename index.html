@@ -237,6 +237,10 @@ td:first-child{font-weight:700;white-space:nowrap}
 .vcap span{opacity:0;transition:opacity .35s}
 #videoSlide .vcap.on,.vcap span.on{opacity:1}
 #videoSlide.en .vcap{display:none}
+#videoSlide #vcredit{position:absolute;left:60px;bottom:70px;z-index:3;max-width:760px;background:var(--yellow);border:4px solid var(--ink);border-radius:18px;box-shadow:6px 6px 0 var(--ink);
+  padding:14px 22px;font-size:26px;font-weight:700;line-height:1.3;opacity:0;transform:translateY(30px) rotate(-1deg);transition:opacity .5s,transform .6s cubic-bezier(.2,1.4,.4,1)}
+#videoSlide #vcredit.on{opacity:1;transform:rotate(-1deg)}
+#vcredit .uz{font-size:20px;color:#0d4a36}
 #vLang,#vSound{position:absolute;top:22px;z-index:5;border:4px solid var(--ink);border-radius:12px;background:#fff;font-family:"Unbounded";font-weight:700;font-size:18px;padding:8px 14px;opacity:.25;transition:opacity .2s}
 #vLang{right:22px} #vSound{right:110px;display:none}
 #vLang:hover,#vSound:hover{opacity:1}
@@ -429,6 +433,7 @@ td:first-child{font-weight:700;white-space:nowrap}
   <!-- boxes are placed exactly over the english text in the video (1024x576 → 1600x900) -->
   <div class="vcap" id="cap1" style="left:664px;top:320px;width:750px;height:258px"><span>Вот и конец</span><span>нашей презентации</span></div>
   <div class="vcap" id="cap2" style="left:234px;top:320px;width:508px;height:258px"><span>Спасибо</span><span>за внимание!</span></div>
+  <div id="vcredit">🙏 Отдельное спасибо <b>Аюбхону</b> за помощь в подготовке презентации!<span class="uz">Taqdimotni tayyorlashda yordam bergani uchun Ayyubxonga rahmat!</span></div>
   <button id="vSound" title="Звук">🔊</button>
   <button id="vLang" title="RU / EN">RU</button>
 </section>
@@ -625,6 +630,7 @@ function syncCaps(){
     const on=t>=from&&t<to; box.classList.toggle('on',on);
     [...box.children].forEach((sp,i)=>sp.classList.toggle('on',on&&t>=lines[i]));
   });
+  document.getElementById('vcredit').classList.toggle('on',t>=9.2);
   if(!endVideo.paused) requestAnimationFrame(syncCaps);
 }
 endVideo.addEventListener('play',()=>requestAnimationFrame(syncCaps));
